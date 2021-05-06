@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <main class="col-lg-8 mx-auto mt-2">
-      <p class="text-center mx-auto" v-if="!loaded">Carregando...</p>
+      <Loader v-if="!loaded" />
       <div v-if="loaded">
         <h2 class="h2 text-center mb-4">Relatório de rotas por período</h2>
         <p class="text-center h4 mb-4">de {{parseDate(calculatedKmAndFines.period.initial)}} a {{parseDate(calculatedKmAndFines.period.final)}}</p>
@@ -46,12 +46,14 @@
 import { mapState } from 'vuex'
 import ChartContainer from './components/ChartContainer.vue'
 import Card from './components/Card.vue'
+import Loader from './components/Loader.vue'
 
 export default {
   name: 'App',
   components: {
     ChartContainer,
-    Card
+    Card,
+    Loader
   },
   methods: {
     parseDate: function (date) {
