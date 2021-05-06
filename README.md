@@ -23,14 +23,6 @@ $ npm install
 $ npm run serve
 ```
 
-## Contributing
-
-Thanks for being interested on making this app better. We encourage everyone to help improving this project with some new features, bug fixes and performance issues. Please take a little bit of your time to read our guides, so this process can be faster and easier.
-
-### Contribution Guidelines
-
-Take a moment to read about our [Contribution Guidelines](./docs/CONTRIBUTING.md) so you can understand how to submit an issue, commit and create pull requests.
-
 ## Technologies
 
 - [Vue.js](https://vuejs.org/)
