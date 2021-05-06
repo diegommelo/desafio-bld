@@ -1,41 +1,47 @@
-# Desafio Técnico BLD Logística
+<h2 align="center">Front-end Challenge - BLD Logística</h2>
 
-Este projeto foi realizado como parte do processo seletivo para a vaga de Desenvolvedor Front-End Júnior na BLD Logística.
-
-Foram utilizadas as tecnologias: Vue.js + Axios + Bootstrap + Chart.js.
-
-O branch "refactor" contém as primeiras etapas da refatoração do código para melhor utilização de Vuex (apenas como exercício).
-
-Agradeço pela oportunidade e estou à disposição para esclarecer dúvidas ou providenciar mais informações.
-
-Diego Melo
+<h3>A report to show some data about delivery routes</h3>
 
 ---
 
-## Project setup
+## Overview
 
-```
-npm install
-```
+A webpage from a dashboard to show some data about delivery routes from a period.
 
-### Compiles and hot-reloads for development
+- **[Running](#Running)**
+- **[Technologies](#Technologies)**
 
-```
-npm run serve
-```
+## Running
 
-### Compiles and minifies for production
+**ATTENTION:** You need Vue-CLI to run it.
 
-```
-npm run build
-```
+```shell
+$ git clone https://github.com/guiananias/desafio-helpet
 
-### Lints and fixes files
+$ npm install
 
-```
-npm run lint
+$ npm run serve
 ```
 
-### Customize configuration
+## Contributing
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Thanks for being interested on making this app better. We encourage everyone to help improving this project with some new features, bug fixes and performance issues. Please take a little bit of your time to read our guides, so this process can be faster and easier.
+
+### Contribution Guidelines
+
+Take a moment to read about our [Contribution Guidelines](./docs/CONTRIBUTING.md) so you can understand how to submit an issue, commit and create pull requests.
+
+## Technologies
+
+- [Vue.js](https://vuejs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Bootstrap-Vue](https://bootstrap-vue.org/)
+- [chart.js](https://www.chartjs.org/)
+- [vue-chartjs](https://vue-chartjs.org/)
+- [Axios](https://github.com/axios/axios)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+
+## Author
+
+- **Diego Melo** - [GitHub](https://github.com/diegommelo)
