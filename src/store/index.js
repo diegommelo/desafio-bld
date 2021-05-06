@@ -18,7 +18,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getRoutes({commit}) {
+    actionRoutes({commit}) {
       axios.get('https://6050b01f5346090017670430.mockapi.io/api/routes').then(
         response => {
           commit('SET_ROUTES', response.data)
@@ -28,6 +28,15 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    allRoutes: (state) => state.routes
+    getPeriod: (state) => {
+      if(state.loaded) {
+        const dates = state.routes.map((route) => {
+          return route.date
+        })
+        const uniqueDates = [...new Set(dates)]  
+        return uniqueDates;
+      }
+      return null
+    }
   }
 })

@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="container">
+    {{getPeriod}}
     <main class="col-lg-8 mx-auto mt-2">
       <p class="text-center mx-auto" v-if="!loaded">Carregando...</p>
       <div v-if="loaded">
@@ -10,7 +11,7 @@
           :kmByDay="calculatedKmAndFines.kmByDay"
           :averageKmByDay="calculatedKmAndFines.averageKmByDay"
           :totalFinesByDay="calculatedKmAndFines.totalFinesByDay" 
-          :uniqueDates="uniqueDates"
+          :uniqueDates="getPeriod"
         />
       </div>
       <div v-if="loaded" class="container mt-4">
@@ -43,7 +44,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import ChartContainer from './components/ChartContainer.vue'
 import Card from './components/Card.vue'
 
@@ -57,20 +58,12 @@ export default {
     parseDate: function (date) {
       return date.split('-').reverse().join('/');
     },
-    getUniqueDates: function () {
-      const dates = this.routes.map((route) => {
-        return route.date
-      })
-      const uniqueDates = [...new Set(dates)]  
-      return uniqueDates;
-    },
     calcKmAndFines: function () {
-      const uniqueDates = this.getUniqueDates();
       let kmByDay = [];
       let finesByDay = [];
       let averageKmByDay = [];
       let deliveredPackages= [];
-      uniqueDates.map((filteredDate) => {
+      this.getPeriod.map((filteredDate) => {
         let filteredRouteByDay = this.routes.filter((route) => {
           return route.date === filteredDate
         })
@@ -99,25 +92,25 @@ export default {
         'totalFinesOnPeriod': totalFines,
         'totalDeliveredPackages': totalDeliveredPackages,
         'period':{
-          'initial':uniqueDates[0],
-          'final':uniqueDates[uniqueDates.length -1]
+          'initial':this.getPeriod[0],
+          'final':this.getPeriod[this.getPeriod.length -1]
         }
       };    
     }
   },
   mounted: function () {
-    this.$store.dispatch('getRoutes')
+    this.$store.dispatch('actionRoutes')
   },
   computed: {
     calculatedKmAndFines () {
       return this.loaded ? this.calcKmAndFines() : null
     },
-    uniqueDates () {
-      return this.loaded ? this.getUniqueDates() : null
-    },
   ...mapState([
     'routes',
     'loaded'
+  ]),
+  ...mapGetters([
+    'getPeriod'
   ])
   }
 }
