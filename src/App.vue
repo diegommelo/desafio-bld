@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <main class="col-lg-8 mx-auto mt-2">
-      <p v-if="!loaded">Carregando...</p>
+      <p class="text-center mx-auto" v-if="!loaded">Carregando...</p>
       <div v-if="loaded">
         <h2 class="h2 text-center mb-4">Relatório de rotas por período</h2>
         <p class="text-center h4 mb-4">de {{parseDate(calculatedKmAndFines.period.initial)}} a {{parseDate(calculatedKmAndFines.period.final)}}</p>
@@ -49,7 +49,6 @@ import Card from './components/Card.vue'
 
 export default {
   name: 'App',
-
   components: {
     ChartContainer,
     Card

@@ -27,6 +27,17 @@ export default {
       options:{    
         responsive:true,
         maintainAspectRatio:false,
+        tooltips: {
+          titleFontSize:14,
+          titleSpacing:3,
+          bodyFontSize:14,
+          bodySpacing:3,
+          callbacks:{
+            title: function(value){
+              return value[0].label.split('-').reverse().join('/');
+            }
+          }
+        },
         scales: {
           xAxes: [{
             ticks: {
@@ -47,6 +58,7 @@ export default {
             label:'Km percorrido',
             data:this.kmByDay,
             fill:false,
+            backgroundColor: 'rgb(75, 192, 192)',
             borderColor: 'rgb(75, 192, 192)',
             lineTension: 0
           },
@@ -54,6 +66,7 @@ export default {
             label: 'Média de Km',
             data:this.averageKmByDay,
             fill:false,
+            backgroundColor: 'rgb(0,0,0)',
             borderColor: 'rgb(0,0,0)',
             borderDash:[5,5],
             lineTension:0
@@ -62,6 +75,7 @@ export default {
             label: 'Total de Multas',
             data:this.totalFinesByDay,
             fill:false,
+            backgroundColor: 'rgb(255,74,0)',
             borderColor: 'rgb(255,74,0)',
             lineTension:0
           }]
