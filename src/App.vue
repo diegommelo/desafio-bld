@@ -1,6 +1,5 @@
 <template>
   <div id="app" class="container">
-    {{getPeriod}}
     <main class="col-lg-8 mx-auto mt-2">
       <p class="text-center mx-auto" v-if="!loaded">Carregando...</p>
       <div v-if="loaded">
@@ -63,22 +62,17 @@ export default {
       let finesByDay = [];
       let averageKmByDay = [];
       let deliveredPackages= [];
-      this.getPeriod.map((filteredDate) => {
-        let filteredRouteByDay = this.routes.filter((route) => {
-          return route.date === filteredDate
-        })
-        let kmByRouteOnDay = filteredRouteByDay.map((route) => {
-          return route.finalKm - route.initialKm
-        })
+
+      this.getFilteredRoutesByDay.map((route) => {
+        let kmByRouteOnDay = route.map((filteredRoute) => filteredRoute.finalKm - filteredRoute.initialKm)
         let totalKmOnDay = kmByRouteOnDay.reduce((sum,km) => sum+km)
-        let totalFinesByDay = filteredRouteByDay.reduce((sum,route) => sum.finesTotalAmount+route.finesTotalAmount)
-        let deliveredPackagesByDay = filteredRouteByDay.reduce((sum, route) => sum.deliveredPackages + route.deliveredPackages)
-        
-        kmByDay.push(totalKmOnDay)
-        averageKmByDay.push(totalKmOnDay / filteredRouteByDay.length)
+        let totalFinesByDay = route.reduce((sum,fine) => sum.finesTotalAmount + fine.finesTotalAmount)
+        let deliveredPackagesByDay = route.reduce((sum, pack) => sum.deliveredPackages + pack.deliveredPackages)
         finesByDay.push(totalFinesByDay)
+        kmByDay.push(totalKmOnDay)
+        averageKmByDay.push(totalKmOnDay / route.length)
         deliveredPackages.push(deliveredPackagesByDay)
-      })  
+      })
 
       let totalKm = kmByDay.reduce((sum, km) => sum+km)
       let totalFines = finesByDay.reduce((sum, fine) => sum+fine)
@@ -110,7 +104,8 @@ export default {
     'loaded'
   ]),
   ...mapGetters([
-    'getPeriod'
+    'getPeriod',
+    'getFilteredRoutesByDay'    
   ])
   }
 }

@@ -37,6 +37,15 @@ export default new Vuex.Store({
         return uniqueDates;
       }
       return null
+    },
+    getFilteredRoutesByDay: (state, getters) => {
+      if(state.loaded) {
+        let response = getters.getPeriod.map((filteredDate) => {
+          return state.routes.filter((route) => route.date === filteredDate)
+        })
+        return response;
+      }
+      return null;
     }
   }
 })
