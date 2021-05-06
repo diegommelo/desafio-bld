@@ -24,7 +24,9 @@ export default new Vuex.Store({
           commit('SET_ROUTES', response.data)
           commit('SET_LOADED', true)
         }
-      )
+      ).catch(function(error) {
+        console.log(error)
+      })
     }
   },
   getters: {
