@@ -1,18 +1,20 @@
 <template>
   <div id="app" class="col-lg-8 mx-auto p-3 py-md-5">
-    <main>    
-      <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <main>
+      <div class="chart-cointaner">
+        <ChartContainer msg="Welcome to Your Vue.js App"/>
+      </div>
     </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ChartContainer from './components/ChartContainer.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ChartContainer
   },
   methods: {
 
@@ -30,5 +32,4 @@ export default {
 body {
   font-size: .875rem;
 }
-
 </style>
