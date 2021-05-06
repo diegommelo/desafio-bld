@@ -5,7 +5,7 @@
       :chartData="chartData" 
       :options="options" 
       :width="400" 
-      :height="400" 
+      :height="370" 
     />
   </div>
 </template>
