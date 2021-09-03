@@ -16,7 +16,7 @@ A webpage from a dashboard to show some data about delivery routes from a period
 **ATTENTION:** You need Vue-CLI to run it.
 
 ```shell
-$ git clone https://github.com/guiananias/desafio-helpet
+$ git clone https://github.com/diegommelo/desafio-bld
 
 $ npm install
 
